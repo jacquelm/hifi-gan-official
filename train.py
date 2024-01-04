@@ -285,6 +285,8 @@ def train(rank, a, h):
                                 h.fmin,
                                 h.fmax_for_loss,
                             )
+                            print(y_mel.shape)
+                            print(y_g_hat_mel.shape)
                             diff_shape = y_g_hat_mel.shape[-1] - y_mel.shape[-1]
                             y_mel = torch.nn.functional.pad(
                                 y_mel, (0, 0, 0, diff_shape), mode="replicate"

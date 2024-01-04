@@ -31,7 +31,7 @@ def create_mel(a):
             spec = np.load(os.path.join(a.input_dir, filname))
             spec = torch.from_numpy(spec).to(device)
             x = get_mel(spec)
-            np.save(os.path.join(a.out_dir, filname), x.cpu())
+            np.save(os.path.join(a.output_dir, filname), x.cpu())
 
 
 def main():

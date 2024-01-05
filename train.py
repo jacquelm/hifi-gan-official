@@ -159,6 +159,8 @@ def train(rank, a, h):
     mpd.train()
     msd.train()
 
+    print(trainset)
+
     for epoch in range(max(0, last_epoch), a.training_epochs):
         if rank == 0:
             start = time.time()

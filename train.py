@@ -170,7 +170,7 @@ def train(rank, a, h):
         for batch in tqdm(train_loader):
             print(batch[0].shape)
             print(batch[1].shape)
-            print(batch[2].shape)
+            print(batch[2])
             print(batch[3].shape)
     #         if rank == 0:
     #             start_b = time.time()

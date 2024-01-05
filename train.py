@@ -23,6 +23,7 @@ from models import (
     generator_loss,
     discriminator_loss,
 )
+from tqdm import tqdm
 from utils import plot_spectrogram, scan_checkpoint, load_checkpoint, save_checkpoint
 
 torch.backends.cudnn.benchmark = True
@@ -165,7 +166,7 @@ def train(rank, a, h):
         if h.num_gpus > 1:
             train_sampler.set_epoch(epoch)
 
-        for i, batch in enumerate(train_loader):
+        for batch in tqdm(train_loader):
             if rank == 0:
                 start_b = time.time()
             x, y, _, y_mel = batch

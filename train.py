@@ -167,7 +167,7 @@ def train(rank, a, h):
             train_sampler.set_epoch(epoch)
 
         for batch in tqdm(train_loader):
-            print(batch)
+            print(len(batch))
             if rank == 0:
                 start_b = time.time()
             x, y, _, y_mel = batch

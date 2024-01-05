@@ -159,8 +159,6 @@ def train(rank, a, h):
     mpd.train()
     msd.train()
 
-    print(trainset)
-
     for epoch in range(max(0, last_epoch), a.training_epochs):
         if rank == 0:
             start = time.time()
@@ -168,6 +166,8 @@ def train(rank, a, h):
 
         if h.num_gpus > 1:
             train_sampler.set_epoch(epoch)
+
+        print(trainset)
 
         for batch in tqdm(train_loader):
             print(batch[0].shape)

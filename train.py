@@ -158,17 +158,20 @@ def train(rank, a, h):
     generator.train()
     mpd.train()
     msd.train()
-    print(train_loader)
-    print(train_loader[0])
-    # for epoch in range(max(0, last_epoch), a.training_epochs):
-    #     if rank == 0:
-    #         start = time.time()
-    #         print("Epoch: {}".format(epoch + 1))
 
-    #     if h.num_gpus > 1:
-    #         train_sampler.set_epoch(epoch)
+    for epoch in range(max(0, last_epoch), a.training_epochs):
+        if rank == 0:
+            start = time.time()
+            print("Epoch: {}".format(epoch + 1))
 
-    #     for batch in tqdm(train_loader):
+        if h.num_gpus > 1:
+            train_sampler.set_epoch(epoch)
+
+        for batch in tqdm(train_loader):
+            print(batch[0].shape)
+            print(batch[1].shape)
+            print(batch[2].shape)
+            print(batch[3].shape)
     #         if rank == 0:
     #             start_b = time.time()
     #         x, y, _, y_mel = batch
